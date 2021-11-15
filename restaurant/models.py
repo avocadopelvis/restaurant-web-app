@@ -14,5 +14,12 @@ class Table(db.Model):
     time = db.Column(db.String(length = 20), nullable = False)
     date = db.Column(db.String(length = 20), nullable = False)
     accomodation = db.Column(db.Integer(), nullable = False)
+# table1 = Table(table = 1, time = "09:00-10:00 am", date = "23/10/21", accomodation = 4)
+# table2 = Table(table = 1, time = "10:00-11:00 am", date = "23/10/21", accomodation = 4)
 
 #MENU DATABASE
+class Items(db.Model):
+    id = db.Column(db.Integer(), primary_key = True)
+    name = db.Column(db.String(length = 30), nullable = False)
+    description = db.Column(db.String(length = 50), nullable = False)
+    price = db.Column(db.Integer(), nullable = False)

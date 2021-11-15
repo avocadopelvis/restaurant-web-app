@@ -53,7 +53,7 @@
                         <h3 class="home__subtitle">Nothing brings people together like good food.</h3>
                         <a href="{{ url_for('menu_page') }}" class="button">View Menu</a>
                         <a href="{{ url_for('table_page') }}" class="button">Reserve Table</a>
-                    <!--     <a href="table.html" class="button">Track Order</a> -->
+                        <a href="{{ url_for('track_page') }}" class="button">Track Order</a>
                     </div>
                     
                     <img src="{{url_for('static', filename='styles/img/home.png')}}" alt = "" class="home__img">
@@ -70,7 +70,7 @@
                         <a href="#" class="button">Explore history</a>
                     </div>
 
-                    <img src="assets/img/about.jpg" alt="" class="about__img">
+                    <img src="static/styles/img/about.jpg" alt="" class="about__img">
                 </div>
             </section>
 

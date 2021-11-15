@@ -43,3 +43,8 @@ def register_page():
             flash(f'There was an error with creating a user: {err_msg}')
     return render_template('login.html', form = form)
 
+#DELIVERY TRACKING
+@app.route('/track')
+def track_page():
+    return render_template('order-id.html')
+
