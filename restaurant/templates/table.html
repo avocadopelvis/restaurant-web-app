@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== BOX ICONS ==========-->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/styles.css') }}">
+
+        <title>Table Reservation</title>
+</head>
+
+<body>
+
+<!--========== SCROLL TOP ==========-->
+<a href="#" class="scrolltop" id="scroll-top">
+  <i class='bx bx-chevron-up scrolltop__icon'></i>
+</a>
+
+<!--========== HEADER ==========-->
+<header class="l-header" id="header">
+    <nav class="nav bd-container">
+        <a href="#" class="nav__logo"><h1>Silver Leaf.</h1></a>
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="index.html" class="nav__link active-link">Home</a></li>
+                <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="index.html#services" class="nav__link">Services</a></li>
+                <li class="nav__item"><a href="login.html" class="nav__link">Log in</a></li>
+                <li class="nav__item"><a href="login.html" class="nav__link">Register</a></li>
+                <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact us</a></li>
+
+                <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+            </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+    </nav>
+</header>
+
+<section class="menu section bd-container" id="menu">
+
+<h1 class="section-title"> Available Tables </h1>
+
+</section>
+
+<!-- TABLE STARTS -->
+<table>
+  <thead id="table-header">
+    <tr>
+        <th>Table</th>
+        <th>Time</th>
+        <th>Date</th>
+        <th>Accomodation</th>
+        <th></th>
+    </tr>
+    </thead>
+    
+    <tbody>
+    {% for table in tables %}
+        <tr>
+            <td>{{ table.table }}</td>
+            <td>{{ table.time }}</td>
+            <td>{{ table.date }}</td>
+            <td>{{ table.accomodation }}</td>
+            <td><a href ='#' class = 'button'>Reserve</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <!-- <tr>
+      <td>1</td>
+      <td>1:00 - 2:00 pm</td>
+      <td>23/10/21 </td>
+      <td>4</td>
+      <td><a href ='#' class = 'button'>Reserve</a></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>10:00-11:00 am</td>
+        <td>23/10/21 </td>
+        <td>4</td>
+        <td><a href ='#' class = 'button'>Reserve</a></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>11:00-12:00 pm</td>
+        <td>23/10/21 </td>
+        <td>4</td>
+        <td><a href ='#' class = 'button'>Reserve</a></td>
+
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>9:00 - 10:00 am</td>
+      <td>23/10/21 </td>
+      <td>4</td>
+      <td><a href ='#' class = 'button'>Reserve</a></td>
+
+  </tr>
+    <tr>
+        <td>4</td>
+        <td>12:00-1:00 pm</td>
+        <td>23/10/21 </td>
+        <td>4</td>
+        <td><a href ='#' class = 'button'>Reserve</a></td>
+
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>1:00 - 2:00 pm</td>
+        <td>23/10/21 </td>
+        <td>4</td>
+        <td><a href ='#' class = 'button'>Reserve</a></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>9:00 - 10:00 am</td>
+        <td>23/10/21 </td>
+        <td>4</td>
+        <td><a href ='#' class = 'button'>Reserve</a></td>
+
+    </tr>
+    </tbody> -->
+
+</table>
+<!-- TABLE ENDS -->
+
+<!--========== FOOTER ==========-->
+<footer class="footer section bd-container">
+  <div class="footer__container bd-grid">
+      <div class="footer__content">
+          <a href="#" class="footer__logo">Slver Leaf</a>
+          <span class="footer__description">Restaurant</span>
+          <div>
+              <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
+              <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
+              <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+          </div>
+      </div>
+
+      <div class="footer__content">
+          <h3 class="footer__title">Services</h3>
+          <ul>
+              <li><a href="menu.html" class="footer__link">Order Food</a></li>
+              <li><a href="#" class="footer__link">Table Reservation</a></li>
+              <li><a href="#" class="footer__link">Delivery</a></li>
+          </ul>
+      </div>
+
+      <div class="footer__content">
+          <h3 class="footer__title">Information</h3>
+          <ul>
+              <li><a href="#" class="footer__link">Event</a></li>
+              <li><a href="#" class="footer__link">Contact us</a></li>
+              <li><a href="#" class="footer__link">Privacy policy</a></li>
+              <li><a href="#" class="footer__link">Terms of services</a></li>
+          </ul>
+      </div>
+
+      <div class="footer__content">
+          <h3 class="footer__title">Adress</h3>
+          <ul>
+              <li>Somewhere</li>
+              <li>Universe</li>
+              <li>999 - 888 - 777</li>
+              <li>silverleaf@gmail.com</li>
+          </ul>
+      </div>
+  </div>
+
+  <p class="footer__copy">&#169; 2021 Group-37. All right reserved</p>
+  </footer>
+  <!--========== FOOTER ENDS HERE ==========-->
+
+<!--========== SCROLL REVEAL ==========-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--========== MAIN JS ==========-->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
