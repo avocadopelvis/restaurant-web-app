@@ -14,3 +14,5 @@ class Table(db.Model):
     time = db.Column(db.String(length = 20), nullable = False)
     date = db.Column(db.String(length = 20), nullable = False)
     accomodation = db.Column(db.Integer(), nullable = False)
+
+#MENU DATABASE
