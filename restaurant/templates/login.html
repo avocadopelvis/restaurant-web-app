@@ -58,21 +58,33 @@
           <!-- LOGIN FORM ENDS -->
 
           <!-- REGISTRATION FORM -->
-          <form action="#" class="sign-up-form">
+          <form method = "POST" action="#" class="sign-up-form">
+            {{ form.hidden_tag() }}
             <h2 class="title">Sign up</h2>
+
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <!-- <input type="text" placeholder="Username" /> -->
+              {{ form.username(placeholder = "Username") }}
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+              <!-- <input type="email" placeholder="Email" /> -->
+              {{ form.email_address(placeholder = 'Email')}}
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <!-- <input type="password" placeholder="Password" /> -->
+              {{ form.password1(placeholder = 'Password') }}
             </div>
-            <input type="submit" class="btn" value="Sign up" />
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <!-- <input type="password" placeholder="Confirm Password" /> -->
+              {{ form.password2(placeholder = 'Confirm Password')}}
+            </div>
+            <!-- <input type="submit" class="btn" value="Sign up" /> -->
+            {{ form.submit(class = 'btn')}}
+
             <p class="social-text">Or Sign up with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
