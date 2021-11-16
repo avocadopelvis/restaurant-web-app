@@ -393,6 +393,13 @@ img{
   border-radius: .5rem 0 .5rem 0;
 }
 
+.cart__button{
+}
+
+.cart__button:hover{
+  color: var(--first-color);
+}
+
 /*========== CONTACT ==========*/
 .contact__container{
   text-align: center;
