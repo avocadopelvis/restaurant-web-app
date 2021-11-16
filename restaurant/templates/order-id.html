@@ -15,13 +15,16 @@
       <div class="forms-container">
         <div class="signin-signup">
           <form action="#" class="sign-in-form">
+            {{ orderid.hidden_tag() }}
             <h2 class="title">Delivery Tracking</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Order ID" />
+              <!-- <input type="text" placeholder="Order ID" /> -->
+              {{ orderid.orderid(placeholder = "Order ID")}}
             </div>
 
-            <input type="submit" value="Track" class="btn solid" />
+            <!-- <input type="submit" value="Track" class="btn solid" /> -->
+            {{ orderid.submit(class = 'btn solid') }}
           </form>
         </div>
       </div>

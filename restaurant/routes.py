@@ -1,7 +1,7 @@
 from restaurant import app
 from flask import render_template, redirect, url_for, flash
 from restaurant.models import Table, User
-from restaurant.forms import RegisterForm, LoginForm
+from restaurant.forms import RegisterForm, LoginForm, OrderIDForm
 from restaurant import db
 
 @app.route('/')
@@ -49,5 +49,6 @@ def register_page():
 #DELIVERY TRACKING
 @app.route('/track')
 def track_page():
-    return render_template('order-id.html')
+    orderid = OrderIDForm()
+    return render_template('order-id.html', orderid = orderid)
 

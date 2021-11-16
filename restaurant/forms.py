@@ -12,4 +12,8 @@ class RegisterForm(FlaskForm):
 class LoginForm(FlaskForm):
     username = StringField(label = 'username', validators = [DataRequired()])
     password = PasswordField(label = 'password', validators = [DataRequired()])
-    submit = SubmitField(label = 'Sign In')     
+    submit = SubmitField(label = 'Sign In')
+
+class OrderIDForm(FlaskForm):
+    orderid = StringField(label ='order-id', validators = [Length(min = 10), DataRequired()])      
+    submit = SubmitField(label = 'Track')
