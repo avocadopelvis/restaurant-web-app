@@ -7,6 +7,14 @@ class User(db.Model):
     email_address = db.Column(db.String(length = 50), nullable = False, unique = True)
     password_hash = db.Column(db.String(length = 60), nullable = False) 
 
+    @property
+    def password(self):
+        return self.password
+    
+    @password.setter
+    def password(self, plain_text_password):
+        self.password_hash = plain_text_password
+        
 #TABLE RESERVATION DATABASE
 class Table(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
@@ -18,7 +26,7 @@ class Table(db.Model):
 # table2 = Table(table = 1, time = "10:00-11:00 am", date = "23/10/21", accomodation = 4)
 
 #MENU DATABASE
-class Items(db.Model):
+class Item(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     name = db.Column(db.String(length = 30), nullable = False)
     description = db.Column(db.String(length = 50), nullable = False)
