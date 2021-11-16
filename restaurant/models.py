@@ -1,4 +1,5 @@
 from restaurant import db
+from restaurant import bcrypt
 
 #USER DATABASE
 class User(db.Model):
@@ -13,7 +14,7 @@ class User(db.Model):
     
     @password.setter
     def password(self, plain_text_password):
-        self.password_hash = plain_text_password
+        self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
         
 #TABLE RESERVATION DATABASE
 class Table(db.Model):

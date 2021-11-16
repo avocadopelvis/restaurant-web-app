@@ -21,15 +21,18 @@
         <div class="signin-signup">
 
           <!-- LOGIN FORM -->
-          <form action="#" class="sign-in-form">
+          <form method = "POST" action="#" class="sign-in-form">
+            {{ forml.hidden_tag() }}
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+              <!-- <input type="text" placeholder="Username" /> -->
+              {{ forml.username(placeholder = "Username") }}
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+              <!-- <input type="password" placeholder="Password" /> -->
+              {{ forml.password(placeholder = "Password")}}
             </div>
 
             <!-- FORGOT PASSWORD -->
@@ -38,7 +41,9 @@
             </div>
             <!-- FORGOT PASSWORD ENDS -->
 
-            <input type="submit" value="Login" class="btn solid" />
+            <!-- <input type="submit" value="Login" class="btn solid" /> -->
+            {{ forml.submit(class = 'btn solid')}}
+
             <p class="social-text">Or Sign in with social platforms</p>
             <div class="social-media">
               <a href="#" class="social-icon">
