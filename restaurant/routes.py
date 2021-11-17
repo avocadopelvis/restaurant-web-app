@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, flash
 from restaurant.models import Table, User
 from restaurant.forms import RegisterForm, LoginForm, OrderIDForm
 from restaurant import db
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 @app.route('/')
 #HOME PAGE
@@ -36,6 +36,13 @@ def login_page():
         else:
             flash('Username or password is incorrect! Please Try Again', category = 'danger') #displayed in case user is not registered
     return render_template('login.html', forml = forml, form = form)
+
+#LOGOUT FUNCTIONALITY
+@app.route('/logout')
+def logout():
+    logout_user() #used to log out
+    flash('You have been logged out!', category = 'info')
+    return redirect(url_for("home_page")) 
 
 #REGISTER PAGE
 @app.route('/register', methods = ['GET', 'POST'])

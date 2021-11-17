@@ -13,6 +13,9 @@
         <title>Menu</title>
     </head>
     <body>
+        <!-- {% for mesg in get_flashed_messages() %}
+        <h1>{{ mesg }}</h1>
+        {% endfor %} -->
 
     <!--========== SCROLL TOP ==========-->
     <a href="#" class="scrolltop" id="scroll-top">
@@ -26,11 +29,15 @@
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link active-link">Home</a></li>
+                    <li class="nav__item"><a href="{{ url_for('home_page' )}}" class="nav__link active-link">Home</a></li>
                     <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
                     <li class="nav__item"><a href="index.html#services" class="nav__link">Services</a></li>
-                    <li class="nav__item"><a href="login.html" class="nav__link">Log in</a></li>
-                    <li class="nav__item"><a href="login.html#register" class="nav__link">Register</a></li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav__item"><a href="{{ url_for('logout') }}" class="nav__link">Log Out</a></li>
+                    {% else %}
+                    <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
+                    <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Register</a></li>
+                    {% endif %}
                     <!-- <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact us</a></li> -->
                     <li class="nav__item"><a href="#" class="cart__button"><i class='bx bx-cart-alt'></i></a></li>
 
@@ -42,6 +49,18 @@
                 <i class='bx bx-menu'></i>
             </div>
         </nav>
+        <!-- {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+        {% endwith %} -->
     </header>
 
 <!-- ========== MENU ==========-->
@@ -211,6 +230,7 @@
 
 <!--========== MAIN JS ==========-->
 <script src="assets/js/main.js"></script>
+
 
 </body>
 </html>

@@ -29,8 +29,14 @@
                         <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                         <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                        <!-- <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
+                        <li class="nav__item"><a href="{{ url_for('register_page') }}" class="nav__link">Register</a></li> -->
+                        {% if current_user.is_authenticated %}
+                        <li class="nav__item"><a href="#" class="nav__link">Log Out</a></li>
+                        {% else %}
                         <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
                         <li class="nav__item"><a href="{{ url_for('register_page') }}" class="nav__link">Register</a></li>
+                        {% endif %}
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
 
                         <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
