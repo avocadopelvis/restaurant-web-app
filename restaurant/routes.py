@@ -1,9 +1,9 @@
 from restaurant import app
 from flask import render_template, redirect, url_for, flash
 from restaurant.models import Table, User
-from restaurant.forms import RegisterForm, LoginForm, OrderIDForm
+from restaurant.forms import RegisterForm, LoginForm, OrderIDForm, ReserveForm
 from restaurant import db
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 @app.route('/')
 #HOME PAGE
@@ -19,8 +19,9 @@ def menu_page():
 #TABLE RESERVATION PAGE
 @app.route('/table')
 def table_page():
+    reserve_form = ReserveForm()
     tables = Table.query.all()
-    return render_template('table.html', tables = tables)
+    return render_template('table.html', tables = tables, reserve_form = reserve_form)
 
 #LOGIN PAGE
 @app.route('/login', methods = ['GET', 'POST'])
@@ -56,6 +57,7 @@ def register_page():
                                password = form.password1.data)
          db.session.add(user_to_create)
          db.session.commit()
+         login_user(user_to_create) #login the user on registration 
          return redirect(url_for('menu_page'))
     if form.errors != {}: #if there are not errors from the validations
         for err_msg in form.errors.values():

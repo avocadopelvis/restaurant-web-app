@@ -76,7 +76,13 @@
             <td>{{ table.time }}</td>
             <td>{{ table.date }}</td>
             <td>{{ table.accomodation }}</td>
-            <td><a href ='#' class = 'button'>Reserve</a></td>
+            <td>
+                <!-- <a href ='#' class = 'button'>Reserve</a> -->
+                <form method = 'POST'>
+                    {{ reserve_form.hidden_tag() }}
+                    {{ reserve_form.submit(class = 'button')}}
+                </form>
+            </td>
         </tr>
     {% endfor %}
     </tbody>
