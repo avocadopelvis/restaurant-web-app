@@ -3,6 +3,7 @@ from flask import render_template, redirect, url_for, flash
 from restaurant.models import Table, User
 from restaurant.forms import RegisterForm, LoginForm, OrderIDForm
 from restaurant import db
+from flask_login import login_user
 
 @app.route('/')
 #HOME PAGE
@@ -26,6 +27,14 @@ def table_page():
 def login_page():
     forml = LoginForm()
     form = RegisterForm()
+    if forml.validate_on_submit():
+        attempted_user = User.query.filter_by(username = forml.username.data).first() #get username data entered from sign in form
+        if attempted_user and attempted_user.check_password_correction(attempted_password = forml.password.data): #to check if username & password entered is in user database
+            login_user(attempted_user) #checks if user is registered 
+            flash(f'Signed in successfully as: {attempted_user.username}', category = 'success')
+            return redirect(url_for('menu_page'))
+        else:
+            flash('Username or password is incorrect! Please Try Again', category = 'danger') #displayed in case user is not registered
     return render_template('login.html', forml = forml, form = form)
 
 #REGISTER PAGE

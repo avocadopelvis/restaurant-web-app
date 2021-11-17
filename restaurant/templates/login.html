@@ -21,7 +21,7 @@
         <div class="signin-signup">
 
           <!-- LOGIN FORM -->
-          <form method = "POST" action="#" class="sign-in-form">
+          <form method = "POST" action="{{ url_for('login_page') }}" class="sign-in-form">
             {{ forml.hidden_tag() }}
             <h2 class="title">Sign in</h2>
             <div class="input-field">
@@ -63,7 +63,7 @@
           <!-- LOGIN FORM ENDS -->
 
           <!-- REGISTRATION FORM -->
-          <form method = "POST" action="#" class="sign-up-form">
+          <form method = "POST" action="{{ url_for('register_page') }}" class="sign-up-form">
             {{ form.hidden_tag() }}
             <h2 class="title">Sign up</h2>
 
