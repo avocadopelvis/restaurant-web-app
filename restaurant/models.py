@@ -12,7 +12,9 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key = True)
     username = db.Column(db.String(length = 30), nullable = False, unique = True)
     email_address = db.Column(db.String(length = 50), nullable = False, unique = True)
-    password_hash = db.Column(db.String(length = 60), nullable = False) 
+    password_hash = db.Column(db.String(length = 60), nullable = False)
+    tables = db.relationship('Table', backref = 'reserved_user', lazy = True) # relationship with 'Table'
+    items = db.relationship('Item', backref = 'ordered_user', lazy = True) # relationship with 'Item'
 
     @property
     def password(self):
@@ -34,8 +36,11 @@ class Table(db.Model):
     time = db.Column(db.String(length = 20), nullable = False)
     date = db.Column(db.String(length = 20), nullable = False)
     accomodation = db.Column(db.Integer(), nullable = False)
+    #suggestion: you might want to change 'owner' to 'reservee'
+    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's reserved table
+
 # table1 = Table(table = 1, time = "09:00-10:00 am", date = "23/10/21", accomodation = 4)
-# table2 = Table(table = 1, time = "10:00-11:00 am", date = "23/10/21", accomodation = 4)
+# table2 = Table(table = 2, time = "10:00-11:00 am", date = "23/10/21", accomodation = 4)
 
 #MENU DATABASE
 class Item(db.Model):
@@ -43,3 +48,6 @@ class Item(db.Model):
     name = db.Column(db.String(length = 30), nullable = False)
     description = db.Column(db.String(length = 50), nullable = False)
     price = db.Column(db.Integer(), nullable = False)
+    #suggestion: you might want to change 'owner' to 'orderer'/ 'customer'
+    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's ordered item
+

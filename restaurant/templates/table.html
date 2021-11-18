@@ -80,6 +80,7 @@
                 <!-- <a href ='#' class = 'button'>Reserve</a> -->
                 <form method = 'POST'>
                     {{ reserve_form.hidden_tag() }}
+                    <input id="reserved_table" name="reserved_table" type="hidden" value="{{ table.table }}">
                     {{ reserve_form.submit(class = 'button')}}
                 </form>
             </td>

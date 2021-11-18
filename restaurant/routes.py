@@ -1,9 +1,9 @@
 from restaurant import app
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from restaurant.models import Table, User
 from restaurant.forms import RegisterForm, LoginForm, OrderIDForm, ReserveForm
 from restaurant import db
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 @app.route('/')
 #HOME PAGE
@@ -17,11 +17,23 @@ def menu_page():
     return render_template('menu.html')
 
 #TABLE RESERVATION PAGE
-@app.route('/table')
+@app.route('/table', methods = ['GET', 'POST'])
 def table_page():
     reserve_form = ReserveForm()
-    tables = Table.query.all()
-    return render_template('table.html', tables = tables, reserve_form = reserve_form)
+    # if reserve_form.validate_on_submit():
+    #     print(request.form.get('reserved_table'))
+    #to get rid of 'confirm form resubmission' on refresh
+    if request.method == 'POST':
+        reserved_table = request.form.get('reserved_table')
+        r_table_object = Table.query.filter_by(table = reserved_table).first()
+        if r_table_object:
+            r_table_object.owner = current_user.id #set the owner of the table to the current logged in user
+            db.session.commit()
+            # flash(f"Your table {{ r_table_object.table }} has been reserved successfully!")
+
+    if request.method == 'GET':
+        tables = Table.query.filter_by(owner = None)
+        return render_template('table.html', tables = tables, reserve_form = reserve_form)
 
 #LOGIN PAGE
 @app.route('/login', methods = ['GET', 'POST'])
@@ -49,7 +61,7 @@ def logout():
 @app.route('/register', methods = ['GET', 'POST'])
 def register_page():
     forml = LoginForm()
-    form = RegisterForm()
+    form = RegisterForm() 
     #checks if form is valid
     if form.validate_on_submit():
          user_to_create = User(username = form.username.data,
