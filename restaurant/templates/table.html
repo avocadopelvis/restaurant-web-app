@@ -34,10 +34,10 @@
                 <!-- <li class="nav__item"><a href="login.html" class="nav__link">Log in</a></li>
                 <li class="nav__item"><a href="login.html" class="nav__link">Register</a></li> -->
                 {% if current_user.is_authenticated %}
-                <li class="nav__item"><a href="#" class="nav__link">Log Out</a></li>
+                <li class="nav__item"><a href="{{ url_for('logout') }}" class="nav__link">Log Out</a></li>
                 {% else %}
-                <li class="nav__item"><a href="login.html" class="nav__link">Log in</a></li>
-                <li class="nav__item"><a href="login.html#register" class="nav__link">Register</a></li>
+                <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
+                <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Register</a></li>
                 {% endif %}
                 <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact us</a></li>
 
@@ -81,7 +81,7 @@
                 <form method = 'POST'>
                     {{ reserve_form.hidden_tag() }}
                     <input id="reserved_table" name="reserved_table" type="hidden" value="{{ table.table }}">
-                    {{ reserve_form.submit(class = 'button')}}
+                    {{ reserve_form.submit(class = 'button') }}
                 </form>
             </td>
         </tr>

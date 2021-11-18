@@ -32,10 +32,10 @@
                         <!-- <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
                         <li class="nav__item"><a href="{{ url_for('register_page') }}" class="nav__link">Register</a></li> -->
                         {% if current_user.is_authenticated %}
-                        <li class="nav__item"><a href="#" class="nav__link">Log Out</a></li>
+                        <li class="nav__item"><a href="{{ url_for('logout') }}" class="nav__link">Log Out</a></li>
                         {% else %}
                         <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Log in</a></li>
-                        <li class="nav__item"><a href="{{ url_for('register_page') }}" class="nav__link">Register</a></li>
+                        <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Register</a></li>
                         {% endif %}
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
 

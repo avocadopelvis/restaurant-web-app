@@ -39,8 +39,13 @@ class Table(db.Model):
     #suggestion: you might want to change 'owner' to 'reservee'
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's reserved table
 
-# table1 = Table(table = 1, time = "09:00-10:00 am", date = "23/10/21", accomodation = 4)
-# table2 = Table(table = 2, time = "10:00-11:00 am", date = "23/10/21", accomodation = 4)
+    #function for assigning ownership to the user's order or reserved table
+    def assign_ownership(self, user):
+        self.owner = user.id 
+        db.session.commit()
+        
+# table3 = Table(table = 3, time = "10:00-10:00 am", date = "23/10/21", accomodation = 4)
+# table4 = Table(table = 4, time = "11:00-10:00 am", date = "23/10/21", accomodation = 4)
 
 #MENU DATABASE
 class Item(db.Model):

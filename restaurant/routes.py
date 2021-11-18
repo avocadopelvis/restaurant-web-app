@@ -18,18 +18,20 @@ def menu_page():
 
 #TABLE RESERVATION PAGE
 @app.route('/table', methods = ['GET', 'POST'])
+# @login_required
 def table_page():
     reserve_form = ReserveForm()
-    # if reserve_form.validate_on_submit():
-    #     print(request.form.get('reserved_table'))
     #to get rid of 'confirm form resubmission' on refresh
     if request.method == 'POST':
         reserved_table = request.form.get('reserved_table')
         r_table_object = Table.query.filter_by(table = reserved_table).first()
         if r_table_object:
-            r_table_object.owner = current_user.id #set the owner of the table to the current logged in user
-            db.session.commit()
+            # r_table_object.owner = current_user.id #set the owner of the table to the current logged in user
+            # db.session.commit()
+            r_table_object.assign_ownership(current_user) #set the owner of the table to the current logged in user
             # flash(f"Your table {{ r_table_object.table }} has been reserved successfully!")
+
+        return redirect(url_for('table_page'))
 
     if request.method == 'GET':
         tables = Table.query.filter_by(owner = None)
@@ -45,7 +47,7 @@ def login_page():
         if attempted_user and attempted_user.check_password_correction(attempted_password = forml.password.data): #to check if username & password entered is in user database
             login_user(attempted_user) #checks if user is registered 
             flash(f'Signed in successfully as: {attempted_user.username}', category = 'success')
-            return redirect(url_for('menu_page'))
+            return redirect(url_for('home_page'))
         else:
             flash('Username or password is incorrect! Please Try Again', category = 'danger') #displayed in case user is not registered
     return render_template('login.html', forml = forml, form = form)
@@ -70,7 +72,7 @@ def register_page():
          db.session.add(user_to_create)
          db.session.commit()
          login_user(user_to_create) #login the user on registration 
-         return redirect(url_for('menu_page'))
+         return redirect(url_for('home_page'))
     if form.errors != {}: #if there are not errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}')
