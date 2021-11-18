@@ -1,7 +1,7 @@
 from restaurant import app
 from flask import render_template, redirect, url_for, flash, request
-from restaurant.models import Table, User
-from restaurant.forms import RegisterForm, LoginForm, OrderIDForm, ReserveForm
+from restaurant.models import Table, User, Item
+from restaurant.forms import RegisterForm, LoginForm, OrderIDForm, ReserveForm, OrderForm
 from restaurant import db
 from flask_login import login_user, logout_user, login_required, current_user
 
@@ -14,7 +14,10 @@ def home_page():
 #MENU PAGE
 @app.route('/menu')
 def menu_page():
-    return render_template('menu.html')
+    order_form = OrderForm()
+    # items = Item.query.filter_by(name="Barbecue Salad").first()
+    items = Item.query.all()
+    return render_template('menu.html', items = items, order_form = order_form)
 
 #TABLE RESERVATION PAGE
 @app.route('/table', methods = ['GET', 'POST'])
@@ -26,8 +29,6 @@ def table_page():
         reserved_table = request.form.get('reserved_table')
         r_table_object = Table.query.filter_by(table = reserved_table).first()
         if r_table_object:
-            # r_table_object.owner = current_user.id #set the owner of the table to the current logged in user
-            # db.session.commit()
             r_table_object.assign_ownership(current_user) #set the owner of the table to the current logged in user
             # flash(f"Your table {{ r_table_object.table }} has been reserved successfully!")
 

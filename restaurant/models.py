@@ -55,4 +55,11 @@ class Item(db.Model):
     price = db.Column(db.Integer(), nullable = False)
     #suggestion: you might want to change 'owner' to 'orderer'/ 'customer'
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's ordered item
+    source = db.Column(db.String(length = 30), nullable = False)
+
+#item1 = Item( name = "Barbecue Salad", description = "Delicious Dish", price = 200 )
+#item2 = Item( name = "Salad with Fish", description = "Delicious Dish", price = 150 )
+#item3 = Item( name = "Spinach Salad", description ="Delicious Dish" "Delicious Dish", price = 100 )
+#item1 = Item( name = "", description = "", price = )
+#item1 = Item( name = "", description = "", price = )
 

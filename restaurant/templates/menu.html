@@ -62,6 +62,7 @@
             {% endif %}
         {% endwith %} -->
     </header>
+    <!--========== HEADER ENDS ==========-->
 
 <!-- ========== MENU ==========-->
 <section class="menu section bd-container" id="menu">
@@ -74,103 +75,110 @@
       </div>
     <!-- SEARCH BOX ENDS -->
 
-    <!-- ITEMS -->
+    <!-- ========== ITEMS ==========-->
     <div class="menu__container bd-grid">
+
+        {% for item in items %}
         <div class="menu__content">
-            <img src="assets/img/plate1.png" alt="" class="menu__img">
-            <h3 class="menu__name">Barbecue salad</h3>
-            <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹200.00</span>
+            <!-- <img src="static/styles/img/plate1.png" alt="" class="menu__img"> -->
+            <!-- <img src="static/styles/img/{{ item.source }}"  alt="" class="menu__img" /> -->
+            <img src="{{ url_for('static', filename = 'styles/img/'+item.source) }}" alt="" class="menu__img">
+            <!-- <h3 class="menu__name">Barbecue salad</h3> -->
+            <h3 class="menu__name">{{ item.name }}</h3>
+            <!-- <span class="menu__detail">Delicious dish</span> -->
+            <span class = "menu_detail"> {{ item.description }} </span>
+            <span class="menu__price">₹{{ item.price }}</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
+        {% endfor %}
 
-        <div class="menu__content">
-            <img src="assets/img/plate2.png" alt="" class="menu__img">
+        <!-- <div class="menu__content">
+            <img src="static/styles/img/plate2.png" alt="" class="menu__img">
             <h3 class="menu__name">Salad with fish</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹150.00</span>
+            <span class="menu__price">₹150.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate3.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate3.png" alt="" class="menu__img">
             <h3 class="menu__name">Spinach salad</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹100.00</span>
+            <span class="menu__price">₹100.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
-        </div>
+        </div> -->
 
-        <div class="menu__content">
-            <img src="assets/img/chicken.png" alt="" class="menu__img">
+        <!-- <div class="menu__content">
+            <img src="static/styles/img/chicken.png" alt="" class="menu__img">
             <h3 class="menu__name">Roasted Chicken</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹200.00</span>
+            <span class="menu__price">₹200.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/pizza.png" alt="" class="menu__img">
+            <img src="static/styles/img/pizza.png" alt="" class="menu__img">
             <h3 class="menu__name">Cheese Pizza</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹150.00</span>
+            <span class="menu__price">₹150.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/noodles.png" alt="" class="menu__img">
+            <img src="static/styles/img/noodles.png" alt="" class="menu__img">
             <h3 class="menu__name">Fried Noodles</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹100.00</span>
+            <span class="menu__price">₹100.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate1.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate1.png" alt="" class="menu__img">
             <h3 class="menu__name">Barbecue salad</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹200.00</span>
+            <span class="menu__price">₹200.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate2.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate2.png" alt="" class="menu__img">
             <h3 class="menu__name">Salad with fish</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹150.00</span>
+            <span class="menu__price">₹150.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate3.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate3.png" alt="" class="menu__img">
             <h3 class="menu__name">Spinach salad</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹100.00</span>
+            <span class="menu__price">₹100.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate1.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate1.png" alt="" class="menu__img">
             <h3 class="menu__name">Barbecue salad</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹200.00</span>
+            <span class="menu__price">₹200.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate2.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate2.png" alt="" class="menu__img">
             <h3 class="menu__name">Salad with fish</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹150.00</span>
+            <span class="menu__price">₹150.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
         </div>
 
         <div class="menu__content">
-            <img src="assets/img/plate3.png" alt="" class="menu__img">
+            <img src="static/styles/img/plate3.png" alt="" class="menu__img">
             <h3 class="menu__name">Spinach salad</h3>
             <span class="menu__detail">Delicious dish</span>
-            <span class="menu__preci">₹100.00</span>
+            <span class="menu__price">₹100.00</span>
             <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
-        </div>
+        </div> -->
 
         <!-- ITEM ENDS -->
     </div>
@@ -229,7 +237,7 @@
 <script src="https://unpkg.com/scrollreveal"></script>
 
 <!--========== MAIN JS ==========-->
-<script src="assets/js/main.js"></script>
+<script src="static/styles/js/main.js"></script>
 
 
 </body>

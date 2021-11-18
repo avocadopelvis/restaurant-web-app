@@ -22,4 +22,4 @@ class ReserveForm(FlaskForm):
     submit = SubmitField(label = 'Reserve')
 
 class OrderForm(FlaskForm):
-    submit = SubmitField(label = 'Order')
+    submit = SubmitField()
