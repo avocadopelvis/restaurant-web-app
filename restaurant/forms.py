@@ -25,4 +25,4 @@ class AddForm(FlaskForm):
     submit = SubmitField(label = 'Add')
     
 class OrderForm(FlaskForm):
-    submit = SubmitField(label = 'Add')
+    submit = SubmitField(label = 'Order Now')
