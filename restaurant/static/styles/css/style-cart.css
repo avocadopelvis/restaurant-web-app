@@ -26,20 +26,28 @@ body{
 }
 
 .Heading{
-	font-size: 20px;
+	font-size: 30px;
 	font-family: 'Open Sans';
 	font-weight: 700;
 	color: #2F3841;
 }
 
+.back{
+	text-decoration: none;	
+}
+
 .Action{
-	font-size: 14px;
+	font-size: 17px;
 	font-family: 'Open Sans';
 	font-weight: 600;
-	color: #E44C4C;
+	color:  #707070;
 	cursor: pointer;
-	border-bottom: 1px solid #E44C4C;
 }
+
+.Action:hover{
+	color: #03da43;
+}
+
 
 .Cart-Items{
 	margin: auto;
@@ -104,7 +112,7 @@ body{
 .prices{
 	height: 100%;
 	text-align: right;
-	padding-top: 60px;
+	padding-top: 90px;
 }
 .amount{
 	padding-top: 20px;
@@ -123,11 +131,15 @@ body{
 }
 .remove{
 	padding-top: 5px;
-	font-size: 14px;
+	font-size: 20px;
 	font-family: 'Open Sans';
 	font-weight: 600;
-	color: #E44C4C;
+	color: #707070;
 	cursor: pointer;
+}
+
+.remove:hover{
+	color: #03da43;
 }
 
 .pad{
@@ -181,6 +193,10 @@ hr{
 	font-family: 'Open Sans';
 	font-weight: 600;
 	color: #202020;
+}
+
+.button:hover{
+	color: #03da43;
 }
 
 .menu__img{

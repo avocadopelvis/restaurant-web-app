@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>CART</title>
+	<link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 	<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/style-cart.css') }}">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
 </head>
@@ -9,7 +10,7 @@
    <div class="CartContainer">
    	   <div class="Header">
    	   	<h3 class="Heading">Cart</h3>
-   	   	<h5 class="Action">Remove all</h5>
+   	   	<a href="{{ url_for('menu_page') }}" class = "back"><h5 class="Action">Back to Menu <i class='bx bxs-food-menu'></i></h5></a>
    	   </div>
 
 		{% for selected_item in selected_items %}
@@ -32,13 +33,13 @@
    	   	  <div class="prices">
    	   	  	<div class="amount">₹ {{ selected_item.price }}</div>
    	   	  	<!-- <div class="save"><u>Save for later</u></div> -->
-   	   	  	<div class="remove"><u>Remove</u></div>
+   	   	  	<div class="remove"><i class='bx bxs-trash-alt'></i></div>
    	   	  </div>
         
    	   </div>
 	   {% endfor %}
 
-   	 <!-- <hr> -->
+   	 	<!-- <hr> -->
 		<div class="checkout">
 			<div class="total">
 				<div>
