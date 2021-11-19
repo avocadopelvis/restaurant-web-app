@@ -39,7 +39,7 @@
                     <li class="nav__item"><a href="{{ url_for('login_page') }}" class="nav__link">Register</a></li>
                     {% endif %}
                     <!-- <li class="nav__item"><a href="index.html#contact" class="nav__link">Contact us</a></li> -->
-                    <li class="nav__item"><a href="#" class="cart__button"><i class='bx bx-cart-alt'></i></a></li>
+                    <li class="nav__item"><a href="{{ url_for('cart_page') }}" class="cart__button"><i class='bx bx-cart-alt'></i></a></li>
 
                     <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
                 </ul>
@@ -88,7 +88,13 @@
             <!-- <span class="menu__detail">Delicious dish</span> -->
             <span class = "menu_detail"> {{ item.description }} </span>
             <span class="menu__price">₹{{ item.price }}</span>
-            <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
+            <!-- <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a> -->
+            <form method = 'POST'>
+                {{ add_form.hidden_tag() }}
+                <input id="selected_item" name="selected_item" type="hidden" value="{{ item.name }}">
+                {{ add_form.submit(class = 'button menu__button') }}
+            </form>
+
         </div>
         {% endfor %}
 

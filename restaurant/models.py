@@ -39,7 +39,7 @@ class Table(db.Model):
     #suggestion: you might want to change 'owner' to 'reservee'
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's reserved table
 
-    #function for assigning ownership to the user's order or reserved table
+    #function for assigning ownership to the user's reserved table
     def assign_ownership(self, user):
         self.owner = user.id 
         db.session.commit()
@@ -56,6 +56,11 @@ class Item(db.Model):
     #suggestion: you might want to change 'owner' to 'orderer'/ 'customer'
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's ordered item
     source = db.Column(db.String(length = 30), nullable = False)
+
+    #function for assigning ownership to the user's order
+    def assign_ownership(self, user):
+        self.owner = user.id 
+        db.session.commit()
 
 #item1 = Item( name = "Barbecue Salad", description = "Delicious Dish", price = 200 )
 #item2 = Item( name = "Salad with Fish", description = "Delicious Dish", price = 150 )

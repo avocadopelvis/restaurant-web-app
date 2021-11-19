@@ -21,5 +21,8 @@ class OrderIDForm(FlaskForm):
 class ReserveForm(FlaskForm):
     submit = SubmitField(label = 'Reserve')
 
+class AddForm(FlaskForm):
+    submit = SubmitField(label = 'Add')
+    
 class OrderForm(FlaskForm):
-    submit = SubmitField()
+    submit = SubmitField(label = 'Add')
