@@ -1,6 +1,6 @@
 from restaurant import app
 from flask import render_template, redirect, url_for, flash, request
-from restaurant.models import Table, User, Item
+from restaurant.models import Table, User, Item, Order
 from restaurant.forms import RegisterForm, LoginForm, OrderIDForm, ReserveForm, AddForm, OrderForm
 from restaurant import db
 from flask_login import login_user, logout_user, login_required, current_user
@@ -32,6 +32,9 @@ def menu_page():
 @app.route('/cart', methods = ['GET', 'POST'])
 def cart_page():
     order_form = OrderForm()
+    # if request.method == 'POST':
+    #     ordered_item = request.form.get('ordered_item') #get the ordered item(s) from the cart page
+    #     o_item_object = Order.query.filter
     #get items which user has added to the cart
     selected_items = Item.query.filter_by(owner = current_user.id)
     return render_template('cart.html', order_form = order_form, selected_items = selected_items)
