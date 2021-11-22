@@ -13,7 +13,7 @@
    	   	<a href="{{ url_for('menu_page') }}" class = "back"><h5 class="Action">Back to Menu <i class='bx bxs-food-menu'></i></h5></a>
    	   </div>
 
-		{% for selected_item in selected_items %}
+	   {% for selected_item in selected_items %}
    	   <div class="Cart-Items">
          
    	   	  <div class="image-box">
@@ -30,10 +30,10 @@
    	   	  	<div class="count">1</div>
    	   	  	<div class="btn">-</div>
    	   	  </div>
+
    	   	  <div class="prices">
    	   	  	<div class="amount">₹ {{ selected_item.price }}</div>
-   	   	  	<!-- <div class="save"><u>Save for later</u></div> -->
-   	   	  	<div class="remove"><i class='bx bxs-trash-alt'></i></div>
+   	   	  	<div class="remove"><i class='bx bxs-trash-alt'></i></div> 
    	   	  </div>
         
    	   </div>
@@ -44,16 +44,21 @@
 			<div class="total">
 				<div>
 					<div class="Subtotal">Sub-Total</div>
-					<div class="items">2 items</div>
+					<div class="items"> X items</div>
 				</div>
-				<div class="total-amount">₹ 350</div>
+				<div class="total-amount">₹ {{ selected_items | sum(attribute='price') }}</div>
 			</div>
 			<form method = 'POST'>
+				<!-- Note: This part seems useless -->
 				{{ order_form.hidden_tag() }}
-				
+				{% for selected_item in selected_items %}
+				<input id="ordered_item" name="ordered_item" type="hidden" value="{{ selected_item.name }}">
+				{% endfor %}
 				{{ order_form.submit(class = 'button') }}
 			</form>
 		</div>
+		
+		
 
  	</div>
 </body>

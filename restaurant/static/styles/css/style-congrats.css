@@ -38,7 +38,7 @@ background-image: linear-gradient(to bottom right,#02b3e4,#02ccba);
     max-height:900px;
     border:2px solid white;
     border-radius:5px;
-        box-shadow: 12px 15px 20px 0 rgba(46,61,73,.3);
+    box-shadow: 12px 15px 20px 0 rgba(46,61,73,.3);
     background-image: linear-gradient(to bottom right,#02b3e4,#02ccba);
     background:#fff;
     text-align:center;
@@ -85,9 +85,29 @@ background-image: linear-gradient(to bottom right,#02b3e4,#02ccba);
     stroke-dashoffset: 0;
 }
 
-.regards{
-    font-size:.7em;
+.link{
+    display: inline;
 }
+
+.button{
+	margin-top: 10px;
+	width: 130px;
+	height: 40px;
+	border: none;
+	/* background: linear-gradient(to bottom right, #02e778, #07ff98); */
+	background: #02b3e4;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 20px;
+	font-family: 'Century Gothic';
+	font-weight: 600;
+	color: #ffffff;
+}
+
+.button:hover{
+	color: #006986;
+}
+
 
 
 @media (max-width:600px){

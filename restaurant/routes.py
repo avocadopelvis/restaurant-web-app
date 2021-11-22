@@ -15,7 +15,6 @@ def home_page():
 @app.route('/menu', methods = ['GET', 'POST'])
 def menu_page():
     add_form = AddForm()
-    # items = Item.query.filter_by(name="Barbecue Salad").first()
     if request.method == 'POST':
         selected_item = request.form.get('selected_item') #get the selected item from the menu page
         s_item_object = Item.query.filter_by(name = selected_item).first()
@@ -32,17 +31,32 @@ def menu_page():
 @app.route('/cart', methods = ['GET', 'POST'])
 def cart_page():
     order_form = OrderForm()
-    # if request.method == 'POST':
-    #     ordered_item = request.form.get('ordered_item') #get the ordered item(s) from the cart page
-    #     o_item_object = Order.query.filter
-    #get items which user has added to the cart
-    selected_items = Item.query.filter_by(owner = current_user.id)
-    return render_template('cart.html', order_form = order_form, selected_items = selected_items)
+    if request.method == 'POST':
+        ordered_item = request.form.get('ordered_item') #get the ordered item(s) from the cart page
+        o_item_object = Item.query.filter_by(name = ordered_item).first()
+        order_info = Order(name = current_user.fullname,
+                           address = current_user.address,
+                           order_items = o_item_object.name ) 
+
+        db.session.add(order_info)
+        db.session.commit()
+
+        o_item_object.remove_ownership(current_user)    
+        #return congrats page on successfull order
+        return redirect(url_for('congrats_page'))
     
+    if request.method == 'GET':
+        selected_items = Item.query.filter_by(orderer = current_user.id)#get items which user has added to the cart
+        return render_template('cart.html', order_form = order_form, selected_items = selected_items)
+
+#CONGRATULATIONS PAGE
+@app.route('/congrats')
+def congrats_page():
+    return render_template('congrats.html')   
 
 #TABLE RESERVATION PAGE
 @app.route('/table', methods = ['GET', 'POST'])
-# @login_required
+@login_required
 def table_page():
     reserve_form = ReserveForm()
     #to get rid of 'confirm form resubmission' on refresh
@@ -56,7 +70,7 @@ def table_page():
         return redirect(url_for('table_page'))
 
     if request.method == 'GET':
-        tables = Table.query.filter_by(owner = None)
+        tables = Table.query.filter_by(reservee = None)
         return render_template('table.html', tables = tables, reserve_form = reserve_form)
 
 #LOGIN PAGE
@@ -89,8 +103,10 @@ def register_page():
     #checks if form is valid
     if form.validate_on_submit():
          user_to_create = User(username = form.username.data,
-                               email_address = form.email_address.data,
-                               password = form.password1.data)
+                               fullname = form.fullname.data,
+                               address = form.address.data,
+                               phone_number = form.phone_number.data,
+                               password = form.password1.data,)
          db.session.add(user_to_create)
          db.session.commit()
          login_user(user_to_create) #login the user on registration 

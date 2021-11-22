@@ -11,10 +11,14 @@ def load_user(user_id):
 
 #USER TABLE
 class User(db.Model, UserMixin):
+    #consider changing id to user_id
     id = db.Column(db.Integer(), primary_key = True)
     username = db.Column(db.String(length = 30), nullable = False, unique = True)
-    email_address = db.Column(db.String(length = 50), nullable = False, unique = True)
+    fullname = db.Column(db.String(length = 30), nullable = False)
+    address = db.Column(db.String(length = 50), nullable = False)
+    phone_number = db.Column(db.Integer(), nullable = False)
     password_hash = db.Column(db.String(length = 60), nullable = False)
+
     tables = db.relationship('Table', backref = 'reserved_user', lazy = True) # relationship with 'Table'
     items = db.relationship('Item', backref = 'ordered_user', lazy = True) # relationship with 'Item'
     orders = db.relationship('Order', backref = 'order-id_user', lazy = True) #relationship with 'Table')
@@ -34,17 +38,18 @@ class User(db.Model, UserMixin):
         
 #TABLE RESERVATION TABLE
 class Table(db.Model):
-    id = db.Column(db.Integer(), primary_key = True)
+    #consider changing id to table_id
+    table_id = db.Column(db.Integer(), primary_key = True)
     table = db.Column(db.Integer(), nullable = False)
     time = db.Column(db.String(length = 20), nullable = False)
     date = db.Column(db.String(length = 20), nullable = False)
     accomodation = db.Column(db.Integer(), nullable = False)
     #suggestion: you might want to change 'owner' to 'reservee'
-    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's reserved table
+    reservee = db.Column(db.String(), db.ForeignKey('user.id'))  #used to store info regarding user's reserved table
 
     #function for assigning ownership to the user's reserved table
     def assign_ownership(self, user):
-        self.owner = user.id 
+        self.reservee = user.fullname 
         db.session.commit()
         
 # table3 = Table(table = 3, time = "10:00-10:00 am", date = "23/10/21", accomodation = 4)
@@ -52,39 +57,44 @@ class Table(db.Model):
 
 #MENU TABLE
 class Item(db.Model):
-    id = db.Column(db.Integer(), primary_key = True)
+    #consider changing id to item_id
+    item_id = db.Column(db.Integer(), primary_key = True)
     name = db.Column(db.String(length = 30), nullable = False)
     description = db.Column(db.String(length = 50), nullable = False)
     price = db.Column(db.Integer(), nullable = False)
-    #suggestion: you might want to change 'owner' to 'orderer'/ 'customer'
-    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's ordered item
     source = db.Column(db.String(length = 30), nullable = False)
+    #suggestion: you might want to change 'owner' to 'orderer'/ 'customer'
+    orderer = db.Column(db.Integer(), db.ForeignKey('user.id'))  #used to store info regarding user's ordered item
 
     #function for assigning ownership to the user's selected item
     def assign_ownership(self, user):
-        self.owner = user.id 
+        self.orderer = user.id 
         db.session.commit()
 
-#item1 = Item( name = "Barbecue Salad", description = "Delicious Dish", price = 200 )
+    def remove_ownership(self, user):
+        self.orderer = None
+        db.session.commit()
+
+#item1 = Item( name = "Barbecue Salad", description = "Delicious Dish", price = 200, source = "plate1.png" )
 #item2 = Item( name = "Salad with Fish", description = "Delicious Dish", price = 150 )
 #item3 = Item( name = "Spinach Salad", description ="Delicious Dish" "Delicious Dish", price = 100 )
 
 #ORDERS TABLE
 class Order(db.Model):
-    # id = db.Column(db.Integer(), primary_key = True)
     order_id = db.Column(db.Integer(), primary_key = True)
-    name = db.Column(db.String(length = 30), nullable = False)
+    name = db.Column(db.String(length = 30), db.ForeignKey('user.username'))
     address = db.Column(db.String(length = 30), nullable = False)
-    order_items = db.Column(db.String(length = 30), nullable = False)
+    order_items = db.Column(db.String(length = 300), nullable = False)
     datetime = db.Column(db.DateTime(timezone = True), server_default = func.now())
-    # time = db.Column(db.String(length = 20), nullable = False)
-    # owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
-
 
     #function for assigning ownership to the user's order
-    # def assign_ownership(self, user):
-    #     self.owner = user.id 
+    # def set_info(self, user):
+    #     self.name = user.username
+    #     self.addresss = user.address 
+    #     # self.order_items = item.name #where name has orderer
     #     db.session.commit()
+
+#CART TABLE
 
 
 

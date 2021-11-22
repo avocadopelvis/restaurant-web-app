@@ -69,13 +69,20 @@
 
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <!-- <input type="text" placeholder="Username" /> -->
               {{ form.username(placeholder = "Username") }}
             </div>
             <div class="input-field">
-              <i class="fas fa-envelope"></i>
+              <i class="fas fa-user"></i>
+              {{ form.fullname(placeholder = "Full Name") }}
+            </div>
+            <div class="input-field">
+              <i class="fas fa-map-marker-alt"></i>
+              {{ form.address(placeholder = "Address") }}
+            </div>
+            <div class="input-field">
+              <i class="fas fa-mobile-alt"></i>
               <!-- <input type="email" placeholder="Email" /> -->
-              {{ form.email_address(placeholder = 'Email') }}
+              {{ form.phone_number(placeholder = 'Phone Number') }}
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
