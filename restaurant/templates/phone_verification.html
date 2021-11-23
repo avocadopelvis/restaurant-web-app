@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Phone Verification</title>
+
+    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.css" data-turbolinks-track="reload" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    <h1>Verify your phone number</h1>
+
+    <form action="/phone_verification" accept-charset="UTF-8" method="post">
+      <div>
+        <label for="authy-countries">Country code:</label>
+        <select name="country_code" id="authy-countries" data-show-as="number"></select>
+      </div>
+      <div>
+        <label for="phone_number">Phone number:</label>
+        <!-- get phone number -->
+        <input type="tel" name="phone_number" id="phone_number" /> 
+      </div>
+      <!-- <div>
+        <p>Verification method</p>
+        <label for="method_sms">SMS: </label>
+        <input type="radio" name="method" id="method_sms" value="sms" />
+        <label for="method_call">Call: </label>
+        <input type="radio" name="method" id="method_call" value="call" />
+      </div> -->
+      <button name="button" type="submit">Verify</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/style-otp.css') }}">
+  <title>OTP FORM</title>
+</head>
+<body>
+  <div class="container-fp">
+    <div class="form-container-fp">
+      <form action="#" accept-charset="UTF-8" method="post" class="otp-form">
+        <h2 class="title">Change Password</h2>
+        <div class="input-field">
+            <i class="fas fa-user"></i>
+            <input type="text" placeholder="Username" />
+        </div>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="New Password" />
+        </div>
+        <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Confirm New Password" />
+        </div>
+        <input action="/return_login" type="submit" value="Submit" class="btn solid" />
+      </form>
+    </div>
+  </div>
+</body>
+</html>

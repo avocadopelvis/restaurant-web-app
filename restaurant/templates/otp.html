@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/style-otp.css') }}">
+  <title>OTP FORM</title>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <form action="/verify" accept-charset="UTF-8" method="post" class="otp-form">
+        <h2 class="title">Enter OTP</h2>
+        <div class="input-field">
+          <i class="fas fa-mobile-alt"></i>
+          <!-- <input type="text" placeholder="OTP" /> -->
+          <input name="token" id="token" placeholder="OTP"></select>
+        </div>
+          <!-- RESEND OTP -->
+          <div class='resend'>
+            <h4 class="resend-otp"><a href = "{{url_for('verify') }}" action="#" class="ro-link">Resend OTP</a></h4>
+          </div>
+          <!-- RESEND OTP ENDS -->
+        <input type="submit" value="Verify" class="btn solid" />
+      </form>
+    </div>
+  </div>
+</body>
+</html>

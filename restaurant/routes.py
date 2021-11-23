@@ -1,5 +1,5 @@
-from restaurant import app
-from flask import render_template, redirect, url_for, flash, request
+from restaurant import app, api
+from flask import render_template, redirect, url_for, flash, request, session, Response
 from restaurant.models import Table, User, Item, Order
 from restaurant.forms import RegisterForm, LoginForm, OrderIDForm, ReserveForm, AddForm, OrderForm
 from restaurant import db
@@ -88,6 +88,15 @@ def login_page():
             flash('Username or password is incorrect! Please Try Again', category = 'danger') #displayed in case user is not registered
     return render_template('login.html', forml = forml, form = form)
 
+#FORGOT PASSWORD
+@app.route('/forgot', methods = ['GET', 'POST'])
+def forgot():
+    return render_template("forgot.html")
+
+def return_login():
+    return render_template("login.html")
+
+
 #LOGOUT FUNCTIONALITY
 @app.route('/logout')
 def logout():
@@ -110,7 +119,8 @@ def register_page():
          db.session.add(user_to_create)
          db.session.commit()
          login_user(user_to_create) #login the user on registration 
-         return redirect(url_for('home_page'))
+         return redirect(url_for('verify'))
+
     if form.errors != {}: #if there are not errors from the validations
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}')
@@ -121,4 +131,32 @@ def register_page():
 def track_page():
     orderid = OrderIDForm()
     return render_template('order-id.html', orderid = orderid)
+
+#OTP VERIFICATION
+@app.route("/verify", methods=["GET", "POST"])
+def verify():
+    country_code = "+91"
+    phone_number = current_user.phone_number
+    method = "sms"
+    session['country_code'] = "+91"
+    session['phone_number'] = current_user.phone_number
+
+    api.phones.verification_start(phone_number, country_code, via=method)
+
+    if request.method == "POST":
+            token = request.form.get("token") #OTP user entered
+
+            phone_number = session.get("phone_number")
+            country_code = session.get("country_code")
+
+            verification = api.phones.verification_check(phone_number,
+                                                         country_code,
+                                                         token)
+
+            if verification.ok():
+                # return Response("<h1>Success!</h1>")
+                return redirect('home_page')
+
+    return render_template("otp.html")
+
 
