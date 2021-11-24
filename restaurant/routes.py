@@ -74,9 +74,6 @@ def table_page():
         tables = Table.query.filter_by(reservee = None)
         return render_template('table.html', tables = tables, reserve_form = reserve_form)
 
-
-
-
 #LOGIN PAGE
 @app.route('/login', methods = ['GET', 'POST'])
 def login_page():
@@ -86,7 +83,7 @@ def login_page():
         attempted_user = User.query.filter_by(username = forml.username.data).first() #get username data entered from sign in form
         if attempted_user and attempted_user.check_password_correction(attempted_password = forml.password.data): #to check if username & password entered is in user database
             login_user(attempted_user) #checks if user is registered 
-            flash(f'Signed in successfully as: {attempted_user.username}', category = 'success')
+            # flash(f'Signed in successfully as: {attempted_user.username}', category = 'success')
             return redirect(url_for('home_page'))
         else:
             flash('Username or password is incorrect! Please Try Again', category = 'danger') #displayed in case user is not registered
@@ -124,6 +121,8 @@ def register_page():
          db.session.commit()
          login_user(user_to_create) #login the user on registration 
          return redirect(url_for('verify'))
+    # else:
+    #     flash("Username already exists!")
 
     if form.errors != {}: #if there are not errors from the validations
         for err_msg in form.errors.values():
@@ -175,8 +174,8 @@ def verify():
                 # return Response("<h1>Your Phone has been Verified successfully!</h1>")
                 return render_template("index.html")
             else:
-                return Response("<center><h1>Wrong OTP!</h1><center>")
-                # flash('Your OTP is incorrect! Please Try Again', category = 'danger')
+                # return Response("<center><h1>Wrong OTP!</h1><center>")
+                flash('Your OTP is incorrect! Please Try Again', category = 'danger')
 
     return render_template("otp.html")
 

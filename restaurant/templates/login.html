@@ -14,6 +14,16 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/style-login.css') }}">
 
     <title>Login & Registration</title>
+     <!-- FLASH
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+       <ul class=flashes>
+       {% for category, message in messages %}
+         <li class="{{ category }}">{{ message }}</li>
+       {% endfor %}
+       </ul>
+     {% endif %}
+    {% endwith %} -->
   </head>
   <body>
     <div class="container">
