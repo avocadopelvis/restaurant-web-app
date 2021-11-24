@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery tracking</title>
+
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/css/styles.css') }}">
+
+  </head>
+  <body>
+
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top">
+      <i class='bx bx-chevron-up scrolltop__icon'></i>
+  </a>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+      <nav class="nav bd-container">
+          <a href="#" class="nav__logo"><h1>Silver Leaf.</h1></a>
+
+          <div class="nav__menu" id="nav-menu">
+              <ul class="nav__list">
+                  <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                  <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                  <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
+                  <li class="nav__item"><a href="login.html" class="nav__link">Log in</a></li>
+                  <li class="nav__item"><a href="login.html" class="nav__link">Register</a></li>
+                  <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
+
+                  <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+              </ul>
+          </div>
+
+          <div class="nav__toggle" id="nav-toggle">
+              <i class='bx bx-menu'></i>
+          </div>
+      </nav>
+  </header>
+  <!--========== HEADER ENDS ==========-->
+
+  <!--========== HEADER ENDS ==========-->
+    <section class="contact section map-container" id="contact">
+    <div id="map"></div>
+    </section>
+
+    <section class="contact section orderinfo-container" id="contact">
+    <p><h1>Your order is on the way!</h1></p>
+    </section>
+
+    <!-- <script>
+
+     function initMap() {
+        const directionsRenderer = new google.maps.DirectionsRenderer();
+        const directionsService = new google.maps.DirectionsService();
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 14,
+          center: { lat: 18.030905 , lng: 79.542875 },
+        });
+
+        directionsRenderer.setMap(map);
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+        DRIVING.addEventListener("change", () => {
+          calculateAndDisplayRoute(directionsService, directionsRenderer);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+        const selectedMode = "DRIVING" //document.getElementById("mode").value;
+
+        directionsService
+          .route({
+            origin: { lat: 18.030905, lng: 79.542875 },
+            destination: { lat:17.99231667131914 , lng:79.55652413925598 },
+            travelMode: google.maps.TravelMode[selectedMode],
+          })
+          .then((response) => {
+            directionsRenderer.setDirections(response);
+          })
+          .catch((e) => window.alert("Directions request failed due to " + status));
+      }
+
+      // window.alert("The delivery agent is on his way")
+      </script> -->
+
+    <script src="static/styles/js/track.js"></script>
+    
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"
+      async>
+    </script>
+
+    <!--========== FOOTER ==========-->
+    <footer class="footer section bd-container">
+        <div class="footer__container bd-grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo">Silver Leaf</a>
+                <span class="footer__description">Restaurant</span>
+                <div>
+                    <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-instagram'></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Services</h3>
+                <ul>
+                    <li><a href="table.html" class="footer__link">Table Reservation</a></li>
+                    <li><a href="menu.html" class="footer__link">Order Food</a></li>
+                    <li><a href="#" class="footer__link">Delivery Tracking</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Event</a></li>
+                    <li><a href="#" class="footer__link">Contact us</a></li>
+                    <li><a href="#" class="footer__link">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link">Terms of services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Address</h3>
+                <ul>
+                    <li>Park Street, Taltala</li>
+                    <li>Kolkata, West Bengal</li>
+                    <li>031-4281-7093</li>
+                    <li>silverleaf@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <p class="footer__copy">&#169; 2021 Group-37. All rights reserved</p>
+        </footer>
+        <!--========== FOOTER ENDS ==========-->
+
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="static/styles/js/main.js"></script>
+  </body>
+</html>

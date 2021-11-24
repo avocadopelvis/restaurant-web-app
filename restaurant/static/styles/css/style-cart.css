@@ -9,7 +9,7 @@ body{
 }
 
 .CartContainer{
-	width: 70%;
+	width: 80%;
 	height: 90%;
 	background-color: #ffffff;
     border-radius: 20px;
@@ -186,17 +186,19 @@ hr{
 	height: 40px;
 	border: none;
 	/* background: linear-gradient(to bottom right, #02e778, #07ff98); */
-	background: #0ef585;
+	/* background: #0ef585; */
+	background-color: #069C54;
 	border-radius: 20px;
 	cursor: pointer;
 	font-size: 16px;
 	font-family: 'Open Sans';
 	font-weight: 600;
-	color: #202020;
+	/* color: #202020; */
+	color: #FFF;
 }
 
 .button:hover{
-	color: #03da43;
+	background-color: #048654;
 }
 
 .menu__img{

@@ -51,9 +51,17 @@ class Table(db.Model):
     def assign_ownership(self, user):
         self.reservee = user.fullname 
         db.session.commit()
-        
-# table3 = Table(table = 3, time = "10:00-10:00 am", date = "23/10/21", accomodation = 4)
-# table4 = Table(table = 4, time = "11:00-10:00 am", date = "23/10/21", accomodation = 4)
+# table1 = Table(table = 1, time = "10:00-11:00 am", date = "24/11/21", accomodation = 4)                
+# table2 = Table(table = 2, time = "10:00-11:00 am", date = "24/11/21", accomodation = 4)        
+# table3 = Table(table = 6, time = "11:00-12:00 am", date = "24/11/21", accomodation = 4)
+# table4 = Table(table = 4, time = "11:00-12:00 am", date = "24/11/21", accomodation = 4)
+# table5 = Table(table = 5, time = "12:00-01:00 am", date = "24/11/21", accomodation = 4)        
+# table6 = Table(table = 5, time = "01:00-02:00 am", date = "24/11/21", accomodation = 4)        
+# table7 = Table(table = 6, time = "01:00-02:00 am", date = "24/11/21", accomodation = 4)        
+# table8 = Table(table = 8, time = "02:00-03:00 am", date = "24/11/21", accomodation = 4)        
+# table9 = Table(table = 1, time = "03:00-04:00 am", date = "24/11/21", accomodation = 4)        
+# table10 = Table(table = 2, time = "03:00-04:00 am", date = "24/11/21", accomodation = 4)        
+# db.session.add(table
 
 #MENU TABLE
 class Item(db.Model):
@@ -76,8 +84,16 @@ class Item(db.Model):
         db.session.commit()
 
 #item1 = Item( name = "Barbecue Salad", description = "Delicious Dish", price = 200, source = "plate1.png" )
-#item2 = Item( name = "Salad with Fish", description = "Delicious Dish", price = 150 )
-#item3 = Item( name = "Spinach Salad", description ="Delicious Dish" "Delicious Dish", price = 100 )
+#item2 = Item( name = "Salad with Fish", description = "Delicious Dish", price = 150, source = "plate2.png" )
+#item3 = Item( name = "Spinach Salad", description ="Delicious Dish" , price = 100, source = "plate3.png" )
+#item4 = Item( name = "Fresh Salad", description = "Delicious Dish", price = 200, source = "salad.png" )
+#item5 = Item( name = "Fried Noodles", description = "Delicious Dish", price = 200, source = "noodles.png" )
+#item6 = Item( name = "Roasted Chicken", description = "Delicious Dish", price = 300, source = "chicken.png" )
+#item7 = Item( name = "Cheese Pizza", description = "Delicious Dish", price = 200, source = "pizza.png" )
+#item8 = Item( name = "Barbecue Salad", description = "Delicious Dish", price = 200, source = "plate1.png" )
+#item9 = Item( name = "Salad with Fish", description = "Delicious Dish", price = 150, source = "plate2.png" )
+#db.session.add(item
+
 
 #ORDERS TABLE
 class Order(db.Model):

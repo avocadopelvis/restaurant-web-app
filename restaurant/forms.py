@@ -17,7 +17,7 @@ class LoginForm(FlaskForm):
     submit = SubmitField(label = 'Sign In')
 
 class OrderIDForm(FlaskForm):
-    orderid = StringField(label ='order-id', validators = [Length(min = 10), DataRequired()])      
+    orderid = StringField(label ='order-id', validators = [Length(min = 1), DataRequired()])      
     submit = SubmitField(label = 'Track')
 
 class ReserveForm(FlaskForm):

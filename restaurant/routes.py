@@ -13,6 +13,7 @@ def home_page():
 
 #MENU PAGE
 @app.route('/menu', methods = ['GET', 'POST'])
+@login_required
 def menu_page():
     add_form = AddForm()
     if request.method == 'POST':
@@ -73,6 +74,9 @@ def table_page():
         tables = Table.query.filter_by(reservee = None)
         return render_template('table.html', tables = tables, reserve_form = reserve_form)
 
+
+
+
 #LOGIN PAGE
 @app.route('/login', methods = ['GET', 'POST'])
 def login_page():
@@ -126,11 +130,25 @@ def register_page():
             flash(f'There was an error with creating a user: {err_msg}')
     return render_template('login.html', form = form, forml = forml)
 
-#DELIVERY TRACKING
-@app.route('/track')
+#ORDER ID PAGE
+@app.route('/order_id', methods = ['GET', 'POST'])
 def track_page():
     orderid = OrderIDForm()
+    # if request.method == "POST":
+    if orderid.validate_on_submit:
+        #check to see if order id matches
+        valid_orderid = Order.query.filter_by( order_id = orderid.orderid.data ).first()
+        if valid_orderid:
+            return redirect(url_for('delivery'))
+        else:
+            flash('Your Order-ID is invalid! Please Try Again.', category = 'danger')
+
     return render_template('order-id.html', orderid = orderid)
+
+#DELIVERY TRACKING PAGE
+@app.route('/deliverytracking')
+def delivery():
+    return render_template('track.html')
 
 #OTP VERIFICATION
 @app.route("/verify", methods=["GET", "POST"])
@@ -154,8 +172,11 @@ def verify():
                                                          token)
 
             if verification.ok():
-                # return Response("<h1>Success!</h1>")
-                return redirect('home_page')
+                # return Response("<h1>Your Phone has been Verified successfully!</h1>")
+                return render_template("index.html")
+            else:
+                return Response("<center><h1>Wrong OTP!</h1><center>")
+                # flash('Your OTP is incorrect! Please Try Again', category = 'danger')
 
     return render_template("otp.html")
 
