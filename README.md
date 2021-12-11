@@ -43,6 +43,7 @@ The front-end portion of the website has been developed using **HTML, CSS & Java
 ![register](https://user-images.githubusercontent.com/92647313/143269562-8892a106-5d79-435d-8443-d0033de8d29d.png)
 
 ### Phone Number Verification
+![otp page](https://user-images.githubusercontent.com/92647313/145669345-1664b46a-d8d8-4862-ae2e-65f2638bbc14.png)
 
 ### Login Page
 ![login](https://user-images.githubusercontent.com/92647313/143269879-8703fd51-d4f1-47ef-a82d-04ab302b3d00.png)
