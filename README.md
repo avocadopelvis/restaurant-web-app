@@ -1,12 +1,5 @@
-# Silver Leaf Restaurant Website
+# Silver Leaf - Restaurant Web Application
 A Restaurant Web Application with **Table Booking, Online Food Ordering and Delivery Tracking.**<br/>
-
-# Developed by: <br/>
-### GROUP-37 <br/> 
-**Members:** <br/>
-- Vijay Lokith R R    | 2019IMT-114
-- Chinthala Ashish | 2019IMT-030
-- Avo Elvis Theyo  | 2019IMT-026
 
 # Brief Description
 Silver Leaf is a web-based application that is operated on a web server with its data being retained in a database. It is designed to enable the registered customer to reserve a table at the restaurant at a specified time in accordance with its availability, view and order the offered food item of their choice, and track the delivery of their order. Since the Internet provides a wider range of customers, the website will provide the restaurant with a chance to increase their profits while customers can avail the restaurant's services at the comforts of their homes.
@@ -77,5 +70,11 @@ The front-end portion of the web application has been developed using **HTML, CS
 ### Contact Us Page
 ![contact-us](https://user-images.githubusercontent.com/92647313/143270006-6e1ab438-d112-44a0-be1e-a55a857a7dac.png)
 
+# Developed by: <br/>
+### GROUP-37 <br/> 
+**Members:** <br/>
+- Vijay Lokith R R    | 2019IMT-114
+- Chinthala Ashish | 2019IMT-030
+- Avo Elvis Theyo  | 2019IMT-026
 
 If you would like to make any suggestions to improve the web application, feel free to contact any of the developers.
