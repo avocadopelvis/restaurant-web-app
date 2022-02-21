@@ -1,0 +1,8 @@
+flask
+flask-sqlalchemy
+flask-login
+flask-bcrypt
+authy
+wtforms
+flask-wtf
+twilio
