@@ -2,19 +2,22 @@
 A Restaurant Web Application with **Table Booking, Online Food Ordering and Delivery Tracking.**<br/>
 
 # Brief Description
-Silver Leaf is a web-based application that is operated on a web server with its data being retained in a database. It is designed to enable the registered customer to reserve a table at the restaurant at a specified time in accordance with its availability, view and order the offered food item of their choice, and track the delivery of their order. Since the Internet provides a wider range of customers, the website will provide the restaurant with a chance to increase their profits while customers can avail the restaurant's services at the comforts of their homes.
+Silver Leaf is a web-based application that is operated on a web server with its data being retained in a database. It is designed to enable the registered customer to reserve a table at the restaurant at a specified time in accordance with its availability, view and order the offered food item of their choice, and track the delivery of their order. <br/> 
+Since the Internet provides a wider range of customers, the application will provide the restaurant with a chance to increase their profits while customers can avail the restaurant's services at the comforts of their homes.
 
 # How to install our project <br/>
 
-First clone this repository and install the following in your command line: <br/>
+First, clone this repository and create a virtual environment using:
 ```
-pip install flask <br/>
-pip install flask-sqlalchemy <br/>
-pip install flask-login <br/>
-pip install flask-bcrypt <br/>
-pip install authy <br/>
-pip install wtforms <br/>
-pip intall flask-wtf <br/>
+python -m venv venv
+```
+Activate the virtual environment:
+```
+./venv/Scripts/activate
+```
+Install the required packages using: <br/>
+```
+pip install -r requirements.txt
 ```
 
 Create an Authy Application and grab your API Key https://www.twilio.com/console/authy/applications <br/>
@@ -71,10 +74,8 @@ The front-end portion of the web application has been developed using **HTML, CS
 ![contact-us](https://user-images.githubusercontent.com/92647313/143270006-6e1ab438-d112-44a0-be1e-a55a857a7dac.png)
 
 # Developed by: <br/>
-### GROUP-37 <br/> 
-**Members:** <br/>
-- Vijay Lokith R R    | 2019IMT-114
-- Chinthala Ashish | 2019IMT-030
-- Avo Elvis Theyo  | 2019IMT-026
+- Vijay Lokith R R   
+- Chinthala Ashish 
+- Avo Elvis Theyo 
 
 If you would like to make any suggestions to improve the web application, feel free to contact any of the developers.
