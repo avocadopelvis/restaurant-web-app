@@ -76,6 +76,6 @@ The front-end portion of the web application has been developed using **HTML, CS
 # Developed by: <br/>
 - Vijay Lokith R R   
 - Chinthala Ashish 
-- Avo Elvis Theyo 
+- Elvis Theyo 
 
 If you would like to make any suggestions to improve the web application, feel free to contact any of the developers.
