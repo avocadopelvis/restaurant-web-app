@@ -74,8 +74,8 @@ The front-end portion of the web application has been developed using **HTML, CS
 ![contact-us](https://user-images.githubusercontent.com/92647313/143270006-6e1ab438-d112-44a0-be1e-a55a857a7dac.png)
 
 # Developed by: <br/>
-- Vijay Lokith R R   
-- Chinthala Ashish 
-- Elvis Theyo 
+- [Vijay Lokith R R](https://github.com/vijaylokith)
+- [Chinthala Ashish](https://github.com/AshishAsh01)
+- [Elvis Theyo](https://github.com/avocadopelvis) 
 
 If you would like to make any suggestions to improve the web application, feel free to contact any of the developers.
