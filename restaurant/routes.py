@@ -48,7 +48,8 @@ def cart_page():
     
     if request.method == 'GET':
         selected_items = Item.query.filter_by(orderer = current_user.id)#get items which user has added to the cart
-        return render_template('cart.html', order_form = order_form, selected_items = selected_items)
+        qtd = len(Item.query.filter_by(orderer = current_user.id).all())
+        return render_template('cart.html', order_form = order_form, selected_items = selected_items, selected_items_count = qtd)
 
 #CONGRATULATIONS PAGE
 @app.route('/congrats')

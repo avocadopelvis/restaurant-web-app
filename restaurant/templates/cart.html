@@ -44,7 +44,8 @@
 			<div class="total">
 				<div>
 					<div class="Subtotal">Sub-Total</div>
-					<div class="items"> X items</div>
+					<div class="items">{{ selected_items_count }} items</div>
+
 				</div>
 				<div class="total-amount">₹ {{ selected_items | sum(attribute='price') }}</div>
 			</div>
